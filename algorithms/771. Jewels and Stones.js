@@ -5,12 +5,14 @@ const assert = require('assert');
  * @param {string} S
  * @return {number}
 */
-const main = (jewels, stones) => {
+const numJewelsInStones = (jewels, stones) => {
   const jewelsInArray = jewelsAsArray(jewels);
   const stonesInArray = stonesAsArray(stones);
 
   const numberOfJewels = jewelsInArray.reduce((acc, jewel) => {
-    return acc + stonesInArray.filter(stone => stone === jewel).length;
+    const jewelCount = stonesInArray.filter(stone => stone === jewel).length;
+    
+    return acc + jewelCount;
   }, 0);
 
   return numberOfJewels;
@@ -24,5 +26,5 @@ const stonesAsArray = (stones) => {
   return stones.split('');
 }
 
-console.log(main('aA', 'aAAbbb'));
-console.log(main('z', 'ZZ'));
+assert.equal(numJewelsInStones('aA', 'aAAbbb'), 3);
+assert.equal(numJewelsInStones('z', 'ZZ'), 0);
