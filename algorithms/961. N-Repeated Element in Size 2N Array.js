@@ -1,9 +1,5 @@
 const assert = require('assert');
 
-// solucao extra
-// fazer um hash com os elementos e ir somando 1 por iteração
-// se nao existir no hash, inserir
-
 /**
  * @param {number[]} A
  * @return {number}
@@ -24,6 +20,32 @@ const repeatedNTimes = (arrayOfElements) => {
 
   return element;
 };
+
+// got TLE with this solution
+// const repeatedNTimes = (arrayOfElements) => {
+//   const occurrences = {};
+//   let key;
+//
+//   for (let ans = 0; ans < arrayOfElements.length; ans++) {
+//     if (!Object.keys(occurrences).includes(arrayOfElements[ans].toString())) {
+//       occurrences[arrayOfElements[ans]] = 1;
+//     } else {
+//       occurrences[arrayOfElements[ans]]++;
+//     }
+//   }
+//
+//   const keys = Object.keys(occurrences);
+//
+//   key = keys[0];
+//
+//   for (let ans = 1; ans < keys.length; ans++) {
+//     if (occurrences[key] < occurrences[keys[ans]]) {
+//       key = keys[ans];
+//     }
+//   }
+//
+//   return Number(key);
+// };
 
 assert.equal(repeatedNTimes([1, 2, 3, 3]), 3);
 assert.equal(repeatedNTimes([1, 2, 2, 2, 2, 3, 3, 3]), 2);
